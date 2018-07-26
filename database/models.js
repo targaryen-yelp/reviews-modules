@@ -1,13 +1,21 @@
 const db = require('./index');
 const mongoose = require('mongoose');
-require('mongoose-type-url');
+// require('mongoose-type-url');
+
+const restaurantSchema = mongoose.Schema({
+  reviews: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}]
+})
 
 const reviewSchema = mongoose.Schema({
-  id: String,
-  rating: Number,
-  time_created: Date,
+  reviewData: {
+    id: String,
+    rating: Number,
+    time_created: Date,
+    text: String,
+    url: String
+  },
   user: {
-    image_url: mongoose.SchemaTypes.Url,
+    image_url: String,
     name: String,
     location: String,
     friends: Number,
@@ -15,10 +23,10 @@ const reviewSchema = mongoose.Schema({
     photos: Number,
     elite: Boolean
   },
-  text: String,
-  url: mongoose.SchemaTypes.Url
 })
 
 const Review = mongoose.model('Review', reviewSchema)
+const Restaurant = mongoose.model('Restaurant', restaurantSchema)
 
-module.exports = Review;
+module.exports = {Restaurant, Review};
+// module.exports = ;

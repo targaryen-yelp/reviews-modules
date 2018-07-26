@@ -13,13 +13,12 @@ require('dotenv').config()
 //   password: process.env.DB_PASS
 // })
 
-const port = process.env.port || 3000;
-
+const port = 3000;
 const server = express();
 
 server.use(helmet());
-
 server.use(parser.json());
+server.use(express.static(path.join(__dirname, '../client/dist')))
 
 server.use(parser.urlencoded({extended: false}));
 
