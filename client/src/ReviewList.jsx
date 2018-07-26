@@ -24,8 +24,6 @@ class ReviewList extends React.Component {
     this.fetchReviews();
   }
 
-
-
   fetchReviews() {
     axios.get('/api/reviews')
     .then(result => {
@@ -35,7 +33,6 @@ class ReviewList extends React.Component {
     .catch(err => console.error(err));
   }
 
-  
   
   createData() {
     for(let i = 0; i < 100; i++) {
@@ -59,16 +56,37 @@ class ReviewList extends React.Component {
 
               <img src={review.user.image_url} className="user-picture"/>
               <div className="user-name">{review.user.name}</div>
-              <div className="user-location">{review.user.location}</div>
-              <div className="user-friends">{review.user.friends}</div>
-              <div className="user-review-number">{review.user.reviews}</div>
-              <div className="user-photo-number">{review.user.photos}</div>
+              <div className="user-location">{review.user.location}, CA</div>
+              <div className="user-friends">{review.user.friends} friends</div>
+              <div className="user-review-number">{review.user.reviews} reviews</div>
+              <div className="user-photo-number">{review.user.photos} photos</div>
             
             </div>
 
             <br/>
 
             <div className="review-data">
+
+              <div className="review-score-date">
+
+                <span className="review-rating">{review.reviewData.rating}</span> {'  '}
+                <span className="review-date">{review.reviewData.time_created}</span>
+
+              </div>
+
+              <div className="review-text">{review.reviewData.text}</div>
+              <img src={review.reviewData.review_pic} className="review-picture"/>
+
+              <div className="review-buttons">
+                Was this review ...?
+                <br/>
+                <button>Useful</button>
+                <button>Funny</button>
+                <button>Cool</button>
+                <button>FLAG IMAGE</button>
+              </div>
+              
+              <br/>
              
             </div>
             
@@ -79,6 +97,23 @@ class ReviewList extends React.Component {
     return (
       <div>
         <h2>Recommended Reviews for RESTAURANT-NAME</h2>
+
+        <div className="search-sort-language">
+          <input type="text" placeholder="Search within the reviews" />
+          Sort by
+          <select> 
+            <option value="yelp-sort">Yelp Sort</option>
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="highest-rated">Highest Rated</option>
+            <option value="lowest-rated">Lowest Rated</option>
+            <option value="elites">Elites</option>
+          </select>
+          Language
+          <select>
+            <option value="english">English ({this.state.reviews.length})</option>
+          </select>
+        </div>
 
         <ul>
           {reviewDisplay}
