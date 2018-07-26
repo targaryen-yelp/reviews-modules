@@ -55,11 +55,15 @@ class ReviewList extends React.Component {
             <div className="user-data">
 
               <img src={review.user.image_url} className="user-picture"/>
-              <div className="user-name">{review.user.name}</div>
-              <div className="user-location">{review.user.location}, CA</div>
-              <div className="user-friends">{review.user.friends} friends</div>
-              <div className="user-review-number">{review.user.reviews} reviews</div>
-              <div className="user-photo-number">{review.user.photos} photos</div>
+              <div className="user-stats">
+
+                <div className="user-name">{review.user.name}</div>
+                <div className="user-location">{review.user.location}, CA</div>
+                <div className="user-friends">{review.user.friends} friends</div>
+                <div className="user-review-number">{review.user.reviews} reviews</div>
+                <div className="user-photo-number">{review.user.photos} photos</div>
+
+              </div>
             
             </div>
 
@@ -115,7 +119,7 @@ class ReviewList extends React.Component {
           </select>
         </div>
 
-        <ul>
+        <ul >
           {reviewDisplay}
         </ul>
 
