@@ -26,6 +26,7 @@
     "eslint-plugin-react": "^7.10.0",
     "jest": "^23.4.1",
     "nodemon": "^1.11.0",
+    "style-loader": "^0.21.0",
     "webpack": "^2.4.1"
   },
   "dependencies": {
