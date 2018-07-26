@@ -8,9 +8,11 @@ import React from 'react';
 import axios from 'axios';
 import SingleReview from './SingleReview';
 import { userInfo } from 'os';
-// import CSSModules from 'reac'
-// import styles from '../'
+import styled from 'styled-components';
 
+const AllReviews = styled.ul`
+    list-style-type: none;
+    ` ;
 
 class ReviewList extends React.Component {
   constructor(props) {
@@ -18,7 +20,7 @@ class ReviewList extends React.Component {
     this.state = {
       reviews: [],
     } 
-  
+
   }
 
   componentDidMount() {
@@ -42,8 +44,7 @@ class ReviewList extends React.Component {
       .catch(err => console.log(err))
     }
   }
-
-  
+ 
 
   render () {
 
@@ -119,9 +120,9 @@ class ReviewList extends React.Component {
           </select>
         </div>
 
-        <ul >
+        <AllReviews>
           {reviewDisplay}
-        </ul>
+        </AllReviews>
 
 
         {/* <button onClick={() => this.createData()}>Create data</button> */}
