@@ -5,7 +5,7 @@ import ReviewData from './ReviewData';
 const SingleReview = (props) => (
 
       <div>
-        Single Review {props.reviews.user}
+        Single Review {props.review}
       </div>
     
   

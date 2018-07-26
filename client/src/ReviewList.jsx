@@ -7,6 +7,7 @@
 import React from 'react';
 import axios from 'axios';
 import SingleReview from './SingleReview';
+import { userInfo } from 'os';
 
 
 class ReviewList extends React.Component {
@@ -41,11 +42,11 @@ class ReviewList extends React.Component {
 
   componentDidMount() {
     this.fetchReviews();
-    console.log(this.state.reviews, 'what')
   }
 
+
+
   fetchReviews() {
-    const newReviews = this.state.reviews;
     axios.get('/api/reviews')
     .then(result => {
       this.setState({reviews: result.data}) 
@@ -57,22 +58,53 @@ class ReviewList extends React.Component {
   
   
   createData() {
-    for(let i = 0; i <= 100; i++) {
+    for(let i = 0; i < 100; i++) {
       axios.post('/api/reviews')
       .then(result => console.log(result.data))
       .catch(err => console.log(err))
     }
   }
 
+  
 
+  //I will map the single reviews here
   render () {
+
+    const size = 10;
+    const reviewDisplay = this.state.reviews.slice(0, size).map((review, index) => {
+      return (
+        <li key={index} className="single-review">
+
+            <div className="user-data">
+
+              {/* <img src={review.user.image_url}/> */}
+              <div className="user-name">{review.user.name}</div>
+              <div className="user-location">{review.user.location}</div>
+              <div className="user-friends">{review.user.friends}</div>
+              <div className="user-review-number">{review.user.reviews}</div>
+              <div className="user-photo-number">{review.user.photos}</div>
+            
+            </div>
+
+            <br/>
+
+
+            <div className="review-data">
+             
+            </div>
+            
+        </li>
+      )
+    })
+
     return (
       <div>
-        Reviews
+        <h2>Recommended Reviews for RESTAURANT-NAME</h2>
 
-        <SingleReview 
-        reviews={this.state.reviews}
-        />
+        <ul>
+          {reviewDisplay}
+        </ul>
+
 
         {/* <button onClick={() => this.createData()}>Create data</button> */}
       </div>
