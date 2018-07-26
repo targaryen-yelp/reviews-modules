@@ -15,28 +15,8 @@ class ReviewList extends React.Component {
     super(props);
     this.state = {
       reviews: [],
-      // reviewData: {
-      //   id: '',
-      //   rating: 0,
-      //   time_created: '',
-      //   text: '',
-      //   url: '',
-      // },
-      // user: {
-      //   image_url: '',
-      //   name: '',
-      //   location: '',
-      //   friends: 0,
-      //   reviews: 0,
-      //   photos: 0,
-      //   elite: undefined,
-      // },
-      // restaurants: [],
     } 
-
-    // this.fetchReviews = this.fetchReviews.bind(this);
-    
-    
+  
   }
 
 
@@ -77,7 +57,7 @@ class ReviewList extends React.Component {
 
             <div className="user-data">
 
-              {/* <img src={review.user.image_url}/> */}
+              <img src={review.user.image_url} className="user-picture"/>
               <div className="user-name">{review.user.name}</div>
               <div className="user-location">{review.user.location}</div>
               <div className="user-friends">{review.user.friends}</div>
@@ -87,7 +67,6 @@ class ReviewList extends React.Component {
             </div>
 
             <br/>
-
 
             <div className="review-data">
              
