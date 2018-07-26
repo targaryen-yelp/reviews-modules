@@ -57,7 +57,7 @@ class ReviewList extends React.Component {
 
             <div className="user-data">
 
-              <img src={review.user.image_url} className="user-picture"/>
+              {/* <img src={review.user.image_url} className="user-picture"/> */}
               <div className="user-name">{review.user.name}</div>
               <div className="user-location">{review.user.location}</div>
               <div className="user-friends">{review.user.friends}</div>
@@ -69,6 +69,18 @@ class ReviewList extends React.Component {
             <br/>
 
             <div className="review-data">
+            <div className="review-rating">{review.reviewData.rating}</div>
+            <div className="review-date">{review.reviewData.time_created}</div>
+            <div className="review-text">{review.reviewData.text}</div>
+            <div className="review-buttons">
+              Was this review ...?
+              <br/>
+              <button>Useful</button>
+              <button>Funny</button>
+              <button>Cool</button>
+            </div>
+            
+            <br/>
              
             </div>
             
@@ -79,6 +91,22 @@ class ReviewList extends React.Component {
     return (
       <div>
         <h2>Recommended Reviews for RESTAURANT-NAME</h2>
+        <div className="search-sort-language">
+          <input type="text" placeholder="Search within the reviews" />
+          Sort by
+          <select> 
+            <option value="yelp-sort">Yelp Sort</option>
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="highest-rated">Highest Rated</option>
+            <option value="lowest-rated">Lowest Rated</option>
+            <option value="elites">Elites</option>
+          </select>
+          Language
+          <select>
+            <option value="english">English ({this.state.reviews.length})</option>
+          </select>
+        </div>
 
         <ul>
           {reviewDisplay}
