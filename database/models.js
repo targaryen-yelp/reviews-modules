@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // require('mongoose-type-url');
 
 const restaurantSchema = mongoose.Schema({
-  reviews: [{type: mongoose.Schema.Types.ObjectId, ref: 'Review'}]
+  restaurant: String
 })
 
 const reviewSchema = mongoose.Schema({

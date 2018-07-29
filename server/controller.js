@@ -19,6 +19,7 @@ module.exports = {
   },
   post: (req, res) => {
     new Review({
+      restaurant: faker.company.companyName(),
       reviewData: {
         id: faker.random.uuid(),
         rating: faker.random.number(5),
@@ -40,4 +41,26 @@ module.exports = {
       res.status(201).send(newReview);
     })
   },
+  getRestaurant: (req, res) => {
+    // const { listName } = req.query; //change 
+    // Restaurant.find({})
+    // .populate('reviews')
+    // .exec(function(err, review) {
+    //   if (err) {console.log(err)};
+    //   res.status(200).send(review);
+    // })
+   
+    Restaurant.find({}, (err, reviews) => {
+      if (err) {console.log(err)};
+      res.status(200).send(reviews);
+    })
+  },
+  postRestaurant: (req, res) => {
+    new Restaurant({
+      restaurant: faker.company.companyName()
+    }).save((err, newRestaurant) => {
+      if (err) {console.log(err)};
+      res.status(201).send(newRestaurant);
+    })
+  }
 }
