@@ -17,7 +17,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 // import {faStar} from '@fortawesome/free-regular-svg-icons'
 
-import {EntireReviewSection, AllReviews, Options, SingleReview, VerticalDivider, UserData, Avatar, UserStats, UserName, Location, Elite, ReviewData, FoodPicture, Useful, Funny, Cool, Flag, Divider} from './reviewListStyles.js'
+import {EntireReviewSection, AllReviews, Options, SingleReview, VerticalDivider, UserData, Avatar, UserStats, UserName, Location, Elite, ReviewData, FoodPicture, Useful, Funny, Cool, Flag, Divider, SearchSortLanguage, Search, SearchButton} from './reviewListStyles.js'
 
 
 
@@ -32,13 +32,14 @@ class ReviewList extends React.Component {
 
   componentDidMount() {
     this.fetchReviews();
+    
   }
 
   fetchReviews() {
     axios.get('/api/reviews')
     .then(result => {
       this.setState({reviews: result.data}) 
-      console.log(this.state.reviews[0])
+      console.log(this.state.reviews[0]._id, 'id')
     })
     .catch(err => console.error(err));
   }
@@ -73,6 +74,26 @@ class ReviewList extends React.Component {
       .catch(err => console.log(err))
     }
   }
+
+  increaseUsefulVotes(review) {
+    axios.post(`/api/reviews/${review._id}/usefulVotes`)
+    .then(() => this.fetchReviews())
+    .catch(err => console.log(err));
+  }
+
+  increaseFunnyVotes(review) {
+    axios.post(`/api/reviews/${review._id}/funnyVotes`)
+    .then(() => this.fetchReviews())
+    .catch(err => console.log(err));
+  }
+
+  increaseCoolVotes(review) {
+    axios.post(`/api/reviews/${review._id}/CoolVotes`)
+    .then(() => this.fetchReviews())
+    .catch(err => console.log(err));
+  }
+
+  //create functions that post to new routes for buttons on bottom
  
 
   render () {
@@ -90,9 +111,9 @@ class ReviewList extends React.Component {
 
                 <UserName href="https://www.yelp.com/">{review.user.name}</UserName>
                 <Location>{review.user.location}, CA</Location>
-                <div className="user-friends"><FontAwesomeIcon icon="user-friends" /> {review.user.friends} friends</div>
-                <div className="user-review-number"><FontAwesomeIcon icon="star" /> {review.user.reviews} reviews</div>
-                <div className="user-photo-number"><FontAwesomeIcon icon="camera" /> {review.user.photos} photos</div>
+                <div className="user-friends"><FontAwesomeIcon icon="user-friends" color="#F15C00"/> <b>{review.user.friends}</b> friends</div>
+                <div className="user-review-number"><FontAwesomeIcon icon="star" color="#F15C00"/> <b>{review.user.reviews}</b> reviews</div>
+                <div className="user-photo-number"><FontAwesomeIcon icon="camera" color="#F15C00"/> <b>{review.user.photos}</b> photos</div>
                 <Elite>{this.isElite(review)}</Elite>
               </UserStats>
             
@@ -114,14 +135,14 @@ class ReviewList extends React.Component {
               <br/>
               <div className="review-text">{review.reviewData.text}</div>
               <br/>
-              <FoodPicture src={review.reviewData.review_pic} className="review-picture"/>
+              <FoodPicture src={review.reviewData.review_pic}/>
               <br/><br/>
               <div className="review-buttons">
                 <font size="2"><b>Was this review ...?</b></font>
                 <br/><br/>
-                <Useful><FontAwesomeIcon icon="lightbulb" /> Useful</Useful> {'  '}
-                <Funny><FontAwesomeIcon icon="thumbs-up" /> Funny</Funny> {'  '}
-                <Cool><FontAwesomeIcon icon="user-astronaut" /> Cool</Cool>{'  '}
+                <Useful onClick={() => this.increaseUsefulVotes(review)}><FontAwesomeIcon icon="lightbulb" /> Useful {review.usefulVotes}</Useful> {'  '}
+                <Funny onClick={() => this.increaseFunnyVotes(review)}><FontAwesomeIcon icon="thumbs-up" /> Funny {review.funnyVotes}</Funny> {'  '}
+                <Cool onClick={() => this.increaseCoolVotes(review)}><FontAwesomeIcon icon="user-astronaut" /> Cool {review.coolVotes}</Cool>{'  '}
                 <Flag><FontAwesomeIcon icon="flag" /></Flag>
               </div>
               
@@ -142,23 +163,26 @@ class ReviewList extends React.Component {
       <EntireReviewSection>
         <h2><font color="#d32323">Recommended Reviews </font>for {this.props.restaurant}</h2>
 
-        <div className="search-sort-language">
-          <input type="text" placeholder="Search within the reviews" />
-          <button>Search</button> {'  '}
-          Sort by
-          <select> 
-            <Options value="yelp-sort">Yelp Sort</Options>
-            <Options value="newest">Newest First</Options>
-            <Options value="oldest">Oldest First</Options>
-            <Options value="highest-rated">Highest Rated</Options>
-            <Options value="lowest-rated">Lowest Rated</Options>
-            <Options value="elites">Elites</Options>
-          </select> {'  '}
-          Language
-          <select>
-            <Options value="english">English ({this.state.reviews.length})</Options>
-          </select>
-        </div>
+        <SearchSortLanguage className="search-sort-language">
+          <form>
+            <Search type="text" placeholder="Search within the reviews" />
+            <SearchButton ><FontAwesomeIcon icon="search" color="#eee"/></SearchButton> {'  '}
+          
+            Sort by
+            <select> 
+              <Options value="yelp-sort">Yelp Sort</Options>
+              <Options value="newest">Newest First</Options>
+              <Options value="oldest">Oldest First</Options>
+              <Options value="highest-rated">Highest Rated</Options>
+              <Options value="lowest-rated">Lowest Rated</Options>
+              <Options value="elites">Elites</Options>
+            </select> {'  '}
+            Language
+            <select>
+              <Options value="english">English ({this.state.reviews.length})</Options>
+            </select>
+          </form>
+        </SearchSortLanguage>
 
         <AllReviews>
           {reviewDisplay}

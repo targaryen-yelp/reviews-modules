@@ -23,6 +23,9 @@ const reviewSchema = mongoose.Schema({
     photos: Number,
     elite: Boolean
   },
+  usefulVotes: {type: Number, default: 0},
+  funnyVotes: {type: Number, default: 0},
+  coolVotes: {type: Number, default: 0},
 })
 
 const Review = mongoose.model('Review', reviewSchema)

@@ -1,17 +1,8 @@
 const {Restaurant, Review} = require('../database/models');
 const faker = require('faker');
 
-
 module.exports = {
   get: (req, res) => {
-    // const { listName } = req.query; //change 
-    // Restaurant.find({})
-    // .populate('reviews')
-    // .exec(function(err, review) {
-    //   if (err) {console.log(err)};
-    //   res.status(200).send(review);
-    // })
-   
     Review.find({}, (err, reviews) => {
       if (err) {console.log(err)};
       res.status(200).send(reviews);
@@ -62,5 +53,42 @@ module.exports = {
       if (err) {console.log(err)};
       res.status(201).send(newRestaurant);
     })
+  },
+  useful(req, res) {
+    let query = {_id: req.params.id};
+    let options = {new: true};
+
+    Review.findOneAndUpdate(query, {$inc: {usefulVotes: 1}}, options)
+    .then(review => {
+      res.json(review);
+    })
+    .catch(err => {
+      console.log(query)
+      res.status(500).send('error updating review', err);
+    });
+  },
+  funny(req, res) {
+    let query = {_id: req.params.id};
+    let options = {new: true};
+
+    Review.findOneAndUpdate(query, {$inc: {funnyVotes: 1}}, options)
+    .then(review => {
+      res.json(review);
+    })
+    .catch(err => {
+      res.status(500).send('error updating review', err);
+    });
+  },
+  cool(req, res) {
+    let query = {_id: req.params.id};
+    let options = {new: true};
+
+    Review.findOneAndUpdate(query, {$inc: {coolVotes: 1}}, options)
+    .then(review => {
+      res.json(review);
+    })
+    .catch(err => {
+      res.status(500).send('error updating review', err);
+    });
   }
 }

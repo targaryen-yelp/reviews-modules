@@ -5,9 +5,9 @@ import styled from 'styled-components';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserFriends, faStar,  faCamera, faLightbulb, faThumbsUp, faUserAstronaut, faFlag } from '@fortawesome/free-solid-svg-icons'
+import { faUserFriends, faStar,  faCamera, faLightbulb, faThumbsUp, faUserAstronaut, faFlag, faSearch } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faUserFriends, faStar, faCamera, faLightbulb, faThumbsUp, faUserAstronaut, faFlag)
+library.add(faUserFriends, faStar, faCamera, faLightbulb, faThumbsUp, faUserAstronaut, faFlag, faSearch)
 
 const BackGround = styled.div `
   background-color: #fcfcfc;

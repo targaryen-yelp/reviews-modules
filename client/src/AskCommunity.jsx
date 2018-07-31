@@ -28,7 +28,7 @@ class AskCommunity extends React.Component {
       <Header>Ask the Community</Header>
       <Divider/>
       <Questions>
-        Yelp users haven’t asked any questions yet about {this.props.restaurant}
+        Yelp users haven’t asked any questions yet about <b>{this.props.restaurant}</b>
       </Questions>
       <br/>
       <Button>Ask a Question</Button>

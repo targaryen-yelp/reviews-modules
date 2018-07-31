@@ -163,3 +163,17 @@ export const Divider = styled.hr `
   padding: 0;
 `
 
+export const SearchSortLanguage = styled.span`
+  display: inline-block;
+`
+
+export const Search = styled.input`
+  height: 25px;
+  width: 200px;
+`
+
+export const SearchButton = styled.button`
+  height: 30px;
+  width: 30px;
+  background-color: #dd050b;
+`

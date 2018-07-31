@@ -22,6 +22,6 @@ server.use(express.static(path.join(__dirname, '../client/dist')))
 
 server.use(parser.urlencoded({extended: false}));
 
-server.use('/api', routes);
+server.use('/api/reviews', routes);
 
 server.listen(port, () => console.log(`Server is listening on port ${port}`));
