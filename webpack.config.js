@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
   entry: path.resolve(__dirname, "./client/src/"),
@@ -6,18 +7,20 @@ module.exports = {
     path: path.resolve(__dirname, "./client/dist"),
     filename: "bundle.js"
   },
+  
   module: {
     loaders: [
-      {
-        loader: "babel-loader",
-        test: /\.js[x]?/,
-        exclude: /node_modules/,
-        options: {
-          presets: ["react", "env"]
+        
+        {
+            test: /\.js$/,
+            include: path.resolve(__dirname, './src'),
+            loaders: [
+                'babel'
+            ]
         }
-      }
     ]
   },
+  
   resolve: {
     extensions: [".js", ".jsx"]
   }

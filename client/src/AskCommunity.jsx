@@ -1,4 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
+
+import {EntireSection, Header, Divider, Button, Questions} from './askCommunityStyles'
+
+
 
 
 class AskCommunity extends React.Component {
@@ -6,21 +11,28 @@ class AskCommunity extends React.Component {
     super(props);
     this.state = {
       restaruantName: '',
+      questions: [],
     }
   }
+
+  compenentDidMount() {
+    console.log(this.props.restaurant)
+  }
+
+  
 
   render() {
     return (
 
-    <div>
-      <h1>Ask the Community</h1>
- 
-      <span>
-        Yelp users haven’t asked any questions yet about RESTAURANT-NAME.
-      </span>
+    <EntireSection>
+      <Header>Ask the Community</Header>
+      <Divider/>
+      <Questions>
+        Yelp users haven’t asked any questions yet about <b>{this.props.restaurant}</b>
+      </Questions>
       <br/>
-      <button>Ask a Question</button>
-    </div>
+      <Button>Ask a Question</Button>
+    </EntireSection>
 
     )
   }
