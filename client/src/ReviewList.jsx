@@ -5,10 +5,6 @@
 
 import React from 'react';
 import axios from 'axios';
-<<<<<<< HEAD
-import SingleReview from './SingleReview';
-import { userInfo } from 'os';
-=======
 import Moment from 'react-moment';
 import 'moment-timezone';
 
@@ -18,7 +14,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import {EntireReviewSection, AllReviews, Options, SingleReview, VerticalDivider, UserData, Avatar, UserStats, UserName, Location, Elite, ReviewData, FoodPicture, Useful, Funny, Cool, Flag, Divider, SearchSortLanguage, Search, SearchButton} from './reviewListStyles.js'
 
->>>>>>> pr/5
 
 
 class ReviewList extends React.Component {
@@ -27,19 +22,12 @@ class ReviewList extends React.Component {
     this.state = {
       reviews: [],
     } 
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> pr/5
   }
 
   componentDidMount() {
     this.fetchReviews();
-<<<<<<< HEAD
-=======
     
->>>>>>> pr/5
   }
 
   fetchReviews() {
@@ -51,8 +39,6 @@ class ReviewList extends React.Component {
     .catch(err => console.error(err));
   }
 
-<<<<<<< HEAD
-=======
   displayRatings(review) {
     let rating = review.reviewData.rating
     if (rating === 1) { 
@@ -75,7 +61,6 @@ class ReviewList extends React.Component {
     }
   }
 
->>>>>>> pr/5
   
   createData() {
     for(let i = 0; i < 100; i++) {
@@ -85,9 +70,6 @@ class ReviewList extends React.Component {
     }
   }
 
-<<<<<<< HEAD
-  
-=======
   increaseUsefulVotes(review) {
     axios.post(`/api/reviews/${review._id}/usefulVotes`)
     .then(() => this.fetchReviews())
@@ -108,61 +90,11 @@ class ReviewList extends React.Component {
 
   //create functions that post to new routes for buttons on bottom
  
->>>>>>> pr/5
 
-  //I will map the single reviews here
   render () {
 
     const size = 10;
     const reviewDisplay = this.state.reviews.slice(0, size).map((review, index) => {
-<<<<<<< HEAD
-      return (
-        <li key={index} className="single-review">
-
-            <div className="user-data">
-
-              <img src={review.user.image_url} className="user-picture"/>
-              <div className="user-stats">
-
-                <div className="user-name">{review.user.name}</div>
-                <div className="user-location">{review.user.location}, CA</div>
-                <div className="user-friends">{review.user.friends} friends</div>
-                <div className="user-review-number">{review.user.reviews} reviews</div>
-                <div className="user-photo-number">{review.user.photos} photos</div>
-
-              </div>
-            
-            </div>
-
-            <br/>
-
-            <div className="review-data">
-
-              <div className="review-score-date">
-
-                <span className="review-rating">{review.reviewData.rating}</span> {'  '}
-                <span className="review-date">{review.reviewData.time_created}</span>
-
-              </div>
-
-              <div className="review-text">{review.reviewData.text}</div>
-              <img src={review.reviewData.review_pic} className="review-picture"/>
-
-              <div className="review-buttons">
-                Was this review ...?
-                <br/>
-                <button>Useful</button>
-                <button>Funny</button>
-                <button>Cool</button>
-                <button>FLAG IMAGE</button>
-              </div>
-              
-              <br/>
-             
-            </div>
-            
-        </li>
-=======
       const dateToFormat = new Date(review.reviewData.time_created)
       return (
         <SingleReview key={index}>
@@ -219,37 +151,10 @@ class ReviewList extends React.Component {
 
 
         </SingleReview>
->>>>>>> pr/5
       )
     })
 
     return (
-<<<<<<< HEAD
-      <div>
-        <h2>Recommended Reviews for RESTAURANT-NAME</h2>
-
-        <div className="search-sort-language">
-          <input type="text" placeholder="Search within the reviews" />
-          Sort by
-          <select> 
-            <option value="yelp-sort">Yelp Sort</option>
-            <option value="newest">Newest First</option>
-            <option value="oldest">Oldest First</option>
-            <option value="highest-rated">Highest Rated</option>
-            <option value="lowest-rated">Lowest Rated</option>
-            <option value="elites">Elites</option>
-          </select>
-          Language
-          <select>
-            <option value="english">English ({this.state.reviews.length})</option>
-          </select>
-        </div>
-
-        <ul >
-          {reviewDisplay}
-        </ul>
-
-=======
       <EntireReviewSection>
         <h2><font color="#d32323">Recommended Reviews </font>for {this.props.restaurant}</h2>
 
@@ -277,7 +182,6 @@ class ReviewList extends React.Component {
         <AllReviews>
           {reviewDisplay}
         </AllReviews>
->>>>>>> pr/5
 
         Page 1 of {Math.ceil(this.state.reviews.length / 10)}
         {/* <button onClick={() => this.createData()}>Create data</button> */}
