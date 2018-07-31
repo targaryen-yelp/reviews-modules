@@ -1,6 +1,5 @@
 const db = require('./index');
 const mongoose = require('mongoose');
-// require('mongoose-type-url');
 
 const restaurantSchema = mongoose.Schema({
   restaurant: String
@@ -12,7 +11,7 @@ const reviewSchema = mongoose.Schema({
     rating: Number,
     time_created: Date,
     text: String,
-    url: String
+    review_pic: String
   },
   user: {
     image_url: String,
@@ -32,4 +31,3 @@ const Review = mongoose.model('Review', reviewSchema)
 const Restaurant = mongoose.model('Restaurant', restaurantSchema)
 
 module.exports = {Restaurant, Review};
-// module.exports = ;

@@ -16,10 +16,10 @@ module.exports = {
         rating: faker.random.number(5),
         time_created: faker.date.past(),
         text: faker.lorem.paragraphs(),
-        url: faker.internet.url(),
+        review_pic: faker.image.food(),
       },
       user: {
-        image_url: faker.image.imageUrl(),
+        image_url: faker.image.avatar(),
         name: faker.name.findName(),
         location: faker.address.city(),
         friends: faker.random.number(),
