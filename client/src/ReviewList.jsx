@@ -1,21 +1,16 @@
 //hierarchy
-//ReviewList
-  //SingleReview
-    //UserData
-    //ReviewData
+  //ReviewSection
+    //AskCommunity
+    //ReviewList
 
 import React from 'react';
 import axios from 'axios';
 import Moment from 'react-moment';
 import 'moment-timezone';
-// import SingleReview from './SingleReviewimport { clearLine } from 'readline';
 
-import { userInfo } from 'os';
 import styled from 'styled-components';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
-// import {faStar} from '@fortawesome/free-regular-svg-icons'
 
 import {EntireReviewSection, AllReviews, Options, SingleReview, VerticalDivider, UserData, Avatar, UserStats, UserName, Location, Elite, ReviewData, FoodPicture, Useful, Funny, Cool, Flag, Divider, SearchSortLanguage, Search, SearchButton} from './reviewListStyles.js'
 

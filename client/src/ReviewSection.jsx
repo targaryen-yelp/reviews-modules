@@ -13,7 +13,7 @@ const BackGround = styled.div `
   background-color: #fcfcfc;
   `
 
-class App extends React.Component {
+class ReviewSection extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -43,4 +43,4 @@ class App extends React.Component {
  } 
 }
 
-export default App;
+export default ReviewSection;
