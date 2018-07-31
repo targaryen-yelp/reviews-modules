@@ -11,12 +11,7 @@ const reviewSchema = mongoose.Schema({
     rating: Number,
     time_created: Date,
     text: String,
-<<<<<<< HEAD
-    url: String,
-    review_pic: String,
-=======
     review_pic: String
->>>>>>> pr/5
   },
   user: {
     image_url: String,
@@ -25,7 +20,7 @@ const reviewSchema = mongoose.Schema({
     friends: Number,
     reviews: Number,
     photos: Number,
-    elite: Boolean,
+    elite: Boolean
   },
   usefulVotes: {type: Number, default: 0},
   funnyVotes: {type: Number, default: 0},
