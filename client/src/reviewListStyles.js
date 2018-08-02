@@ -8,14 +8,19 @@ export const AllReviews = styled.ul`
   list-style-type: none;
   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
   padding: 0px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 ` 
 
 export const Options = styled.option`
   font-weight: bold;
 `
+
 export const SingleReview = styled.li`
   display: flex;
   justify-content: space-between;
+  box-sizing: border-box;
 `
 
 export const VerticalDivider = styled.hr`
@@ -25,7 +30,6 @@ export const VerticalDivider = styled.hr`
   position:absolute;
   right:249px;
   top:10px; 
-
 `
 
 export const UserData = styled.div`

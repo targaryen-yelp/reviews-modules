@@ -26,6 +26,7 @@ class ReviewList extends React.Component {
   }
 
   componentDidMount() {
+    console.log('proxy server')
     this.fetchReviews();
     
   }
@@ -112,7 +113,7 @@ class ReviewList extends React.Component {
                 <Elite>{this.isElite(review)}</Elite>
               </UserStats>
             
-              <Divider/>
+              {/* <Divider/> */}
             
             </UserData>
 

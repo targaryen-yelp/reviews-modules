@@ -11,6 +11,10 @@ library.add(faUserFriends, faStar, faCamera, faLightbulb, faThumbsUp, faUserAstr
 
 const BackGround = styled.div `
   background-color: #fcfcfc;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+
   `
 
 class ReviewSection extends React.Component {
