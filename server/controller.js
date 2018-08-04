@@ -32,15 +32,7 @@ module.exports = {
       res.status(201).send(newReview);
     })
   },
-  getRestaurant: (req, res) => {
-    // const { listName } = req.query; //change 
-    // Restaurant.find({})
-    // .populate('reviews')
-    // .exec(function(err, review) {
-    //   if (err) {console.log(err)};
-    //   res.status(200).send(review);
-    // })
-   
+  getRestaurant: (req, res) => { 
     Restaurant.find({}, (err, reviews) => {
       if (err) {console.log(err)};
       res.status(200).send(reviews);
