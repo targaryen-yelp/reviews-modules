@@ -8,34 +8,227 @@ import axios from 'axios';
 import Moment from 'react-moment';
 import 'moment-timezone';
 
-import styled from 'styled-components';
+// import styled from 'styled-components';
+
+import styles from '../dist/style.css';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-import {EntireReviewSection, AllReviews, Options, SingleReview, VerticalDivider, UserData, Avatar, UserStats, UserName, Location, Elite, ReviewData, FoodPicture, Useful, Funny, Cool, Flag, Divider, SearchSortLanguage, Search, SearchButton} from './reviewListStyles.js'
+// import {EntireReviewSection, AllReviews, option, SingleReview, VerticalDivider, UserData, Avatar, UserStats, UserName, Location, Elite, ReviewData, FoodPicture, Useful, Funny, Cool, Flag, Divider, SearchSortLanguage, Search, SearchButton} from './reviewListStyles.js'
 
 
+
+
+// const EntireReviewSection = styled.div`
+//   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+// `
+
+// const AllReviews = styled.ul`
+//   list-style-type: none;
+//   font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+//   padding: 0px;
+//   -webkit-box-sizing: border-box;
+//      -moz-box-sizing: border-box;
+//           box-sizing: border-box;
+// ` 
+
+// const Options = styled.option`
+//   font-weight: bold;
+// `
+
+// const SingleReview = styled.li`
+//   display: flex;
+//   justify-content: space-between;
+//   box-sizing: border-box;
+// `
+
+// const VerticalDivider = styled.hr`
+//   border-left:1px solid #38546d; 
+//   border-right:1px solid #16222c; 
+//   height:80px;
+//   position:absolute;
+//   right:249px;
+//   top:10px; 
+// `
+
+// const UserData = styled.div`
+//   display: flex;
+//   float: left;
+//   padding: 0 15px;
+//   min-height: 1px;
+//   box-sizing: border-box;
+//   width: 37.5%;
+// `
+
+// const Avatar = styled.img`
+//   height: 60px;
+//   width: 60px;
+//   padding-right: 10px;
+// `
+
+// const UserStats = styled.div`
+//   white-space: nowrap;
+//   font-size:80%
+// `
+
+// const UserName = styled.a`
+//   font-size: 110%
+// `
+
+// const Location = styled.div`
+//   font-weight: bold;
+// `
+
+// const Elite = styled.div`
+//   color: #F15C00;
+//   font-weight: bold;
+// `
+
+// const ReviewData = styled.div`
+//   float: left;
+//   padding: 0 15px;
+//   min-height: 1px;
+//   box-sizing: border-box;
+//   width: 62.5%;
+// `
+
+// const FoodPicture = styled.img`
+//   height: 350px;
+//   width: 350px;
+// `
+
+// const Useful = styled.button`
+//   backface-visibility: hidden;
+//   position: relative;
+//   cursor: pointer;
+//   display: inline-block;
+//   white-space: nowrap;
+//   background: #f5f5f5;
+//   border-radius: 2px;
+//   border: 1px solid #e6e6e6;
+//   border-width: 1px 1px 1px 1px;
+//   padding: 10px 20px 10px 20px;
+//   box-shadow: inset 0px 1px 0px #ffffff,0px 1px 3px rgba(0%,0%,0%,0.3);
+//   color: #666666;
+//   font-size: 14px;
+//   font-family: arial;
+//   font-weight: 600;
+//   font-style: normal;
+//   text-shadow: 0px 0px 0px rgba(0%,0%,0%,0.4) 
+// `
+
+// const Funny = styled.button`
+//   backface-visibility: hidden;
+//   position: relative;
+//   cursor: pointer;
+//   display: inline-block;
+//   white-space: nowrap;
+//   background: #f5f5f5;
+//   border-radius: 2px;
+//   border: 1px solid #e6e6e6;
+//   border-width: 1px 1px 1px 1px;
+//   padding: 10px 20px 10px 20px;
+//   box-shadow: inset 0px 1px 0px #ffffff,0px 1px 3px rgba(0%,0%,0%,0.3);
+//   color: #666666;
+//   font-size: 14px;
+//   font-family: arial;
+//   font-weight: 600;
+//   font-style: normal;
+//   text-shadow: 0px 0px 0px rgba(0%,0%,0%,0.4)
+// `
+
+// const Cool = styled.button `
+//   backface-visibility: hidden;
+//   position: relative;
+//   cursor: pointer;
+//   display: inline-block;
+//   white-space: nowrap;
+//   background: #f5f5f5;
+//   border-radius: 2px;
+//   border: 1px solid #e6e6e6;
+//   border-width: 1px 1px 1px 1px;
+//   padding: 10px 20px 10px 20px;
+//   box-shadow: inset 0px 1px 0px #ffffff,0px 1px 3px rgba(0%,0%,0%,0.3);
+//   color: #666666;
+//   font-size: 14px;
+//   font-family: arial;
+//   font-weight: 600;
+//   font-style: normal;
+//   text-shadow: 0px 0px 0px rgba(0%,0%,0%,0.4)
+// `
+
+// const Flag = styled.button `
+//   backface-visibility: hidden;
+//   position: relative;
+//   cursor: pointer;
+//   display: inline-block;
+//   white-space: nowrap;
+//   background: #f5f5f5;
+//   border-radius: 2px;
+//   border: 1px solid #e6e6e6;
+//   border-width: 1px 1px 1px 1px;
+//   padding: 10px 20px 10px 20px;
+//   box-shadow: inset 0px 1px 0px #ffffff,0px 1px 3px rgba(0%,0%,0%,0.3);
+//   color: #666666;
+//   font-size: 14px;
+//   font-family: arial;
+//   font-weight: 600;
+//   font-style: normal;
+//   text-shadow: 0px 0px 0px rgba(0%,0%,0%,0.4)
+// `
+
+// const Divider = styled.hr `
+//   display: block;
+//   height: 1px;
+//   border: 0;
+//   border-top: 1px solid #ccc;
+//   margin: 1em 0;
+//   padding: 0;
+// `
+
+// const SearchSortLanguage = styled.span`
+//   display: inline-block;
+// `
+
+// const Search = styled.input`
+//   height: 25px;
+//   width: 200px;
+// `
+
+// const SearchButton = styled.button`
+//   height: 30px;
+//   width: 30px;
+//   background-color: #dd050b;
+// `
 
 class ReviewList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       reviews: [],
+      hasData: false,
     } 
-
+    // let hasData = false;
   }
 
   componentDidMount() {
-    console.log('proxy server')
-    this.fetchReviews();
-    
+    axios.get('/api/reviews')
+    .then(result => {
+      this.setState({reviews: result.data}) 
+      if (this.state.reviews.length === 0) {
+        this.createData();
+        this.fetchReviews();
+      } else {
+        this.fetchReviews();
+      }
+    })
+    .catch(err => console.error(err));
   }
 
   fetchReviews() {
     axios.get('/api/reviews')
     .then(result => {
       this.setState({reviews: result.data}) 
-      console.log(this.state.reviews[0]._id, 'id')
     })
     .catch(err => console.error(err));
   }
@@ -62,11 +255,10 @@ class ReviewList extends React.Component {
     }
   }
 
-  
   createData() {
     for(let i = 0; i < 100; i++) {
       axios.post('/api/reviews')
-      .then(result => console.log(result.data))
+      .then(result => console.log('more data'))
       .catch(err => console.log(err))
     }
   }
@@ -88,8 +280,6 @@ class ReviewList extends React.Component {
     .then(() => this.fetchReviews())
     .catch(err => console.log(err));
   }
-
-  //create functions that post to new routes for buttons on bottom
  
 
   render () {
@@ -98,28 +288,28 @@ class ReviewList extends React.Component {
     const reviewDisplay = this.state.reviews.slice(0, size).map((review, index) => {
       const dateToFormat = new Date(review.reviewData.time_created)
       return (
-        <SingleReview key={index}>
+        <li className={styles.singleReview} key={index}>
             
-            <UserData >
+            <div className={styles.userData}>
 
-              <Avatar src={review.user.image_url}/>
-              <UserStats >
+              <img className={styles.avatar} src={review.user.image_url}/>
+              <div className={styles.userStats}>
 
-                <UserName href="https://www.yelp.com/">{review.user.name}</UserName>
-                <Location>{review.user.location}, CA</Location>
+                <a className={styles.userName} href="https://www.yelp.com/">{review.user.name}</a>
+                <div className={styles.location}>{review.user.location}, CA</div>
                 <div className="user-friends"><FontAwesomeIcon icon="user-friends" color="#F15C00"/> <b>{review.user.friends}</b> friends</div>
                 <div className="user-review-number"><FontAwesomeIcon icon="star" color="#F15C00"/> <b>{review.user.reviews}</b> reviews</div>
                 <div className="user-photo-number"><FontAwesomeIcon icon="camera" color="#F15C00"/> <b>{review.user.photos}</b> photos</div>
-                <Elite>{this.isElite(review)}</Elite>
-              </UserStats>
+                <div className={styles.elite}>{this.isElite(review)}</div>
+              </div>
             
               {/* <Divider/> */}
             
-            </UserData>
+            </div>
 
             <br/>
 
-            <ReviewData className="review-data">
+            <div className={styles.reviewData}>
            
               <div className="review-score-date">
 
@@ -131,62 +321,62 @@ class ReviewList extends React.Component {
               <br/>
               <div className="review-text">{review.reviewData.text}</div>
               <br/>
-              <FoodPicture src={review.reviewData.review_pic}/>
+              <img className={styles.foodPic} src={review.reviewData.review_pic}/>
               <br/><br/>
               <div className="review-buttons">
                 <font size="2"><b>Was this review ...?</b></font>
                 <br/><br/>
-                <Useful onClick={() => this.increaseUsefulVotes(review)}><FontAwesomeIcon icon="lightbulb" /> Useful {review.usefulVotes}</Useful> {'  '}
-                <Funny onClick={() => this.increaseFunnyVotes(review)}><FontAwesomeIcon icon="thumbs-up" /> Funny {review.funnyVotes}</Funny> {'  '}
-                <Cool onClick={() => this.increaseCoolVotes(review)}><FontAwesomeIcon icon="user-astronaut" /> Cool {review.coolVotes}</Cool>{'  '}
-                <Flag><FontAwesomeIcon icon="flag" /></Flag>
+                <button className={styles.usefulButton} onClick={() => this.increaseUsefulVotes(review)}><FontAwesomeIcon icon="lightbulb" /> Useful {review.usefulVotes}</button> {'  '}
+                <button className={styles.funnyButton} onClick={() => this.increaseFunnyVotes(review)}><FontAwesomeIcon icon="thumbs-up" /> Funny {review.funnyVotes}</button> {'  '}
+                <button className={styles.coolButton} onClick={() => this.increaseCoolVotes(review)}><FontAwesomeIcon icon="user-astronaut" /> Cool {review.coolVotes}</button>{'  '}
+                <button className={styles.flagButton}><FontAwesomeIcon icon="flag" /></button>
               </div>
               
               <br/>
              ` 
               
-            <Divider/>
+            <hr className={styles.reviewDivider}/>
             
 
-            </ReviewData>
+            </div>
 
 
-        </SingleReview>
+        </li>
       )
     })
 
     return (
-      <EntireReviewSection>
+      <div className={styles.reviewEntireSection}>
         <h2><font color="#d32323">Recommended Reviews </font>for {this.props.restaurant}</h2>
 
-        <SearchSortLanguage className="search-sort-language">
+        <span className={styles.searchSortLanguage}>
           <form>
-            <Search type="text" placeholder="Search within the reviews" />
-            <SearchButton ><FontAwesomeIcon icon="search" color="#eee"/></SearchButton> {'  '}
+            <input className={styles.search} type="text" placeholder="Search within the reviews" />
+            <button className={styles.searchButton}><FontAwesomeIcon icon="search" color="#eee"/></button> {'  '}
           
             Sort by
             <select> 
-              <Options value="yelp-sort">Yelp Sort</Options>
-              <Options value="newest">Newest First</Options>
-              <Options value="oldest">Oldest First</Options>
-              <Options value="highest-rated">Highest Rated</Options>
-              <Options value="lowest-rated">Lowest Rated</Options>
-              <Options value="elites">Elites</Options>
+              <option value="yelp-sort">Yelp Sort</option>
+              <option value="newest">Newest First</option>
+              <option value="oldest">Oldest First</option>
+              <option value="highest-rated">Highest Rated</option>
+              <option value="lowest-rated">Lowest Rated</option>
+              <option value="elites">Elites</option>
             </select> {'  '}
             Language
             <select>
-              <Options value="english">English ({this.state.reviews.length})</Options>
+              <option value="english">English ({this.state.reviews.length})</option>
             </select>
           </form>
-        </SearchSortLanguage>
+        </span>
 
-        <AllReviews>
+        <ul className={styles.allReviews}>
           {reviewDisplay}
-        </AllReviews>
+        </ul>
 
         Page 1 of {Math.ceil(this.state.reviews.length / 10)}
         {/* <button onClick={() => this.createData()}>Create data</button> */}
-      </EntireReviewSection>
+      </div>
     )
   }
 }
