@@ -1,26 +1,31 @@
 const path = require("path");
 const webpack = require("webpack");
+var SRC_DIR = path.join(__dirname, './client/src');
+var DIST_DIR = path.join(__dirname, './client/dist');
+// var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: path.resolve(__dirname, "./client/src/"),
+  entry: `${SRC_DIR}/index.js`,
   output: {
-    path: path.resolve(__dirname, "./client/dist"),
-    filename: "bundle.js"
+    filename: 'bundle.js',
+    path: DIST_DIR,
   },
-  
-  module: {
-    loaders: [
-        
-        {
-            test: /\.js$/,
-            include: path.resolve(__dirname, './src'),
-            loaders: [
-                'babel'
-            ]
-        }
-    ]
+  module : {
+    rules : [
+      {
+        test : /\.jsx?/,
+        include : SRC_DIR,
+        loader : 'babel-loader',
+        query: {
+          presets: ['react', 'env'],
+        },
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]' 
+      },
+    ],
   },
-  
   resolve: {
     extensions: [".js", ".jsx"]
   }
