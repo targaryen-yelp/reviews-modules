@@ -32,20 +32,34 @@ module.exports = {
       res.status(201).send(newReview);
     })
   },
-  getRestaurant: (req, res) => { 
-    Restaurant.find({}, (err, reviews) => {
-      if (err) {console.log(err)};
-      res.status(200).send(reviews);
+  deleteReview: (req, res) => {
+    let query = {_id: req.params.id};
+
+    Review.findOneAndDelete(query)
+    .then(review => {
+      res.json(review);
     })
+    .catch(err => {
+      console.log(query)
+      res.status(500).send('error deleting review', err);
+    });
   },
-  postRestaurant: (req, res) => {
-    new Restaurant({
-      restaurant: faker.company.companyName()
-    }).save((err, newRestaurant) => {
-      if (err) {console.log(err)};
-      res.status(201).send(newRestaurant);
-    })
-  },
+
+
+  // getRestaurant: (req, res) => { 
+  //   Restaurant.find({}, (err, reviews) => {
+  //     if (err) {console.log(err)};
+  //     res.status(200).send(reviews);
+  //   })
+  // },
+  // postRestaurant: (req, res) => {
+  //   new Restaurant({
+  //     restaurant: faker.company.companyName()
+  //   }).save((err, newRestaurant) => {
+  //     if (err) {console.log(err)};
+  //     res.status(201).send(newRestaurant);
+  //   })
+  // },
   useful(req, res) {
     let query = {_id: req.params.id};
     let options = {new: true};

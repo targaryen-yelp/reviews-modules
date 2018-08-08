@@ -280,6 +280,12 @@ class ReviewList extends React.Component {
     .then(() => this.fetchReviews())
     .catch(err => console.log(err));
   }
+
+  deleteReview(review) {
+    axios.delete(`/api/reviews/${review._id}`)
+    .then(() => this.fetchReviews())
+    .catch(err => console.log(err));
+  }
  
 
   render () {
@@ -329,7 +335,7 @@ class ReviewList extends React.Component {
                 <button className={styles.usefulButton} onClick={() => this.increaseUsefulVotes(review)}><FontAwesomeIcon icon="lightbulb" /> Useful {review.usefulVotes}</button> {'  '}
                 <button className={styles.funnyButton} onClick={() => this.increaseFunnyVotes(review)}><FontAwesomeIcon icon="thumbs-up" /> Funny {review.funnyVotes}</button> {'  '}
                 <button className={styles.coolButton} onClick={() => this.increaseCoolVotes(review)}><FontAwesomeIcon icon="user-astronaut" /> Cool {review.coolVotes}</button>{'  '}
-                <button className={styles.flagButton}><FontAwesomeIcon icon="flag" /></button>
+                <button className={styles.flagButton} onClick={() => this.deleteReview(review)}><FontAwesomeIcon icon="flag" /></button>
               </div>
               
               <br/>
