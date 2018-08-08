@@ -8,6 +8,9 @@ router.route('/')
 .get(controller.getRestaurant)
 .post(controller.postRestaurant)
 
+router.route('/:id')
+.delete(controller.deleteReview)
+
 router.route('/:id/usefulVotes')
   .post(controller.useful);
 
